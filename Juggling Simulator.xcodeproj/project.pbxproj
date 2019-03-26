@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AC31104C224A7EBD000CA6D8 /* Pentagon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AC31104B224A7E98000CA6D8 /* Pentagon.ttf */; };
 		AC40B3052249479B00E43B1D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC40B3042249479B00E43B1D /* AppDelegate.swift */; };
 		AC40B3072249479B00E43B1D /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = AC40B3062249479B00E43B1D /* GameScene.sks */; };
 		AC40B3092249479B00E43B1D /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = AC40B3082249479B00E43B1D /* Actions.sks */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AC31104B224A7E98000CA6D8 /* Pentagon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Pentagon.ttf; sourceTree = "<group>"; };
 		AC40B3012249479B00E43B1D /* Juggling Simulator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Juggling Simulator.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC40B3042249479B00E43B1D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC40B3062249479B00E43B1D /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				AC40B30A2249479B00E43B1D /* GameScene.swift */,
 				AC40B30C2249479B00E43B1D /* GameViewController.swift */,
 				AC40B30E2249479B00E43B1D /* Main.storyboard */,
+				AC31104B224A7E98000CA6D8 /* Pentagon.ttf */,
 				AC40B3112249479B00E43B1D /* Assets.xcassets */,
 				AC40B3132249479B00E43B1D /* LaunchScreen.storyboard */,
 				AC40B3162249479B00E43B1D /* Info.plist */,
@@ -241,6 +244,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC31104C224A7EBD000CA6D8 /* Pentagon.ttf in Resources */,
 				AC40B3102249479B00E43B1D /* Main.storyboard in Resources */,
 				AC40B3072249479B00E43B1D /* GameScene.sks in Resources */,
 				AC40B3122249479B00E43B1D /* Assets.xcassets in Resources */,
@@ -517,6 +521,7 @@
 				AC40B3312249479B00E43B1D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AC40B3322249479B00E43B1D /* Build configuration list for PBXNativeTarget "Juggling SimulatorTests" */ = {
 			isa = XCConfigurationList;
@@ -525,6 +530,7 @@
 				AC40B3342249479B00E43B1D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		AC40B3352249479B00E43B1D /* Build configuration list for PBXNativeTarget "Juggling SimulatorUITests" */ = {
 			isa = XCConfigurationList;
@@ -533,6 +539,7 @@
 				AC40B3372249479B00E43B1D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
