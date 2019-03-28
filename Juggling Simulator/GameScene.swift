@@ -23,6 +23,10 @@ class GameScene: SKScene {
     let leftGlove = SKSpriteNode(imageNamed:"leftGlove")
     let rightGlove = SKSpriteNode(imageNamed:"rightGlove")
     
+    var timerCount = Timer()
+    
+    var gameOver = false
+    
     lazy var gameTitle: SKLabelNode = {
         var label = SKLabelNode()
         label.fontName = "Pentagon"
@@ -34,6 +38,22 @@ class GameScene: SKScene {
         label.text = "Juggling Simulator"
         return label
     }()
+    
+    
+    lazy var timer: SKLabelNode = {
+        var label = SKLabelNode()
+        label.fontName = "Pentagon"
+        label.fontSize = 100.0
+        label.zPosition = 1
+        label.fontColor = SKColor.init(red: 186.0/256.0, green: 49.0/256.0, blue: 33.0/256.0, alpha: 1.0)
+        label.horizontalAlignmentMode = .center
+        label.verticalAlignmentMode = .center
+        label.text = "0 : 0"
+        return label
+    }()
+    
+    
+    var currentTime = 0
     
     override func didMove(to view: SKView) {
     
@@ -51,6 +71,9 @@ class GameScene: SKScene {
         
         gameTitle.position = CGPoint(x: self.size.width * 0.5, y: self.size.height * 0.95)
         addChild(gameTitle)
+        
+        timer.position = CGPoint(x: self.size.width * 0.5, y: self.size.height * 0.85)
+        addChild(timer)
         
         
         //Create gloves and set position
@@ -91,22 +114,39 @@ class GameScene: SKScene {
         
     }
     
+    func startTimer(){
+        
+        timerCount = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(GameScene.updateTime)), userInfo: nil, repeats: true)
+        
+    }
+    
+    func updateTime(){
+        
+        currentTime += 1
+        timer.text = "\(currentTime / 60) : \(currentTime % 60)"
+        
+    }
+    
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        //Begin timer
+        startTimer()
+        
         //right seqence moves the ball from the left hand to the right hand
-        let moveRight = SKAction.moveTo(x: self.frame.size.width/2, duration: 5.0)
-        let moveUp = SKAction.moveTo(y: self.frame.size.height, duration: 5.0)
-        let moveDown = SKAction.moveTo(y: rightGlove.position.y, duration: 5.0)
-        let moveRighter = SKAction.moveTo(x: rightGlove.position.x, duration: 5.0)
+        let moveRight = SKAction.moveTo(x: self.frame.size.width * 0.6, duration: 1.0)
+        let moveUp = SKAction.moveTo(y: self.frame.size.height * 0.75, duration: 1.0)
+        let moveDown = SKAction.moveTo(y: rightGlove.position.y, duration: 1.0)
+        let moveRighter = SKAction.moveTo(x: rightGlove.position.x, duration: 1.0)
         let group1 = SKAction.group([moveRight,moveUp])
         let group2 = SKAction.group([moveDown,moveRighter])
         let sequenceRight = SKAction.sequence([group1,group2])
 
         
         //left sequence moves the ball from the right hand to the left hand
-        let moveLeft = SKAction.moveTo(x: self.frame.size.width/2, duration: 5.0)
-        let moveDownLeft = SKAction.moveTo(y: leftGlove.position.y, duration: 5.0)
-        let moveLefter = SKAction.moveTo(x: leftGlove.position.x, duration: 5.0)
+        let moveLeft = SKAction.moveTo(x: self.frame.size.width/2, duration: 1.0)
+        let moveDownLeft = SKAction.moveTo(y: leftGlove.position.y, duration: 1.0)
+        let moveLefter = SKAction.moveTo(x: leftGlove.position.x, duration: 1.0)
 
         let group3 = SKAction.group([moveLeft,moveUp])
         let group4 = SKAction.group([moveDownLeft,moveLefter])
@@ -123,6 +163,17 @@ class GameScene: SKScene {
 
     
     override func update(_ currentTime:TimeInterval){
+        
+        //Game is over, stop timer
+        if(gameOver){
+            
+            timerCount.invalidate()
+            
+            timer.text = "Game Over!"
+            
+            //TO-DO: Transition to end screen w/ score and high score
+            
+        }
         
         let leftSize = leftGlove.size
         let rightSize = leftGlove.size
