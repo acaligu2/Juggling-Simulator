@@ -133,20 +133,23 @@ class GameScene: SKScene {
         //Begin timer
         startTimer()
         
+        var redMoved = false
+        var yellowMoved = false
+        
         //right seqence moves the ball from the left hand to the right hand
-        let moveRight = SKAction.moveTo(x: self.frame.size.width * 0.6, duration: 1.0)
-        let moveUp = SKAction.moveTo(y: self.frame.size.height * 0.75, duration: 1.0)
-        let moveDown = SKAction.moveTo(y: rightGlove.position.y, duration: 1.0)
-        let moveRighter = SKAction.moveTo(x: rightGlove.position.x, duration: 1.0)
+        let moveRight = SKAction.moveTo(x: self.frame.size.width * 0.6, duration: 1.5)
+        let moveUp = SKAction.moveTo(y: self.frame.size.height * 0.75, duration: 1.5)
+        let moveDown = SKAction.moveTo(y: rightGlove.position.y, duration: 1.5)
+        let moveRighter = SKAction.moveTo(x: rightGlove.position.x, duration: 1.5)
         let group1 = SKAction.group([moveRight,moveUp])
         let group2 = SKAction.group([moveDown,moveRighter])
         let sequenceRight = SKAction.sequence([group1,group2])
 
         
         //left sequence moves the ball from the right hand to the left hand
-        let moveLeft = SKAction.moveTo(x: self.frame.size.width/2, duration: 1.0)
-        let moveDownLeft = SKAction.moveTo(y: leftGlove.position.y, duration: 1.0)
-        let moveLefter = SKAction.moveTo(x: leftGlove.position.x, duration: 1.0)
+        let moveLeft = SKAction.moveTo(x: self.frame.size.width/2, duration: 1.5)
+        let moveDownLeft = SKAction.moveTo(y: leftGlove.position.y, duration: 1.5)
+        let moveLefter = SKAction.moveTo(x: leftGlove.position.x, duration: 1.5)
 
         let group3 = SKAction.group([moveLeft,moveUp])
         let group4 = SKAction.group([moveDownLeft,moveLefter])
@@ -154,18 +157,61 @@ class GameScene: SKScene {
         
         greenBall.run(sequenceRight)
         
-        //Make conditional block here
-        
-        if(true) {
+        for touch in touches {
             
+            //TO-DO get green to go have the others wait while green moves and then have red and yellow go with there being somewhat of a delay between them as well
+            
+            if(redMoved == false) {
+                
+                redBall.run(sequenceRight)
+                redMoved = true
+            }
+            
+            if(yellowMoved == false) {
+                
+                yellowBall.run(sequenceLeft)
+                yellowMoved = true
+            }
+            
+            if(leftGlove.contains(touch.location(in: self))) {
+                
+                if(greenBall.position.x == leftGlove.position.x && greenBall.position.y == leftGlove.position.y) {
+                    
+                    greenBall.run(sequenceRight)
+                }
+                
+                else if(redBall.position.x == leftGlove.position.x && redBall.position.y == leftGlove.position.y) {
+                    
+                    redBall.run(sequenceRight)
+                }
+                
+                else if(yellowBall.position.x == leftGlove.position.x && yellowBall.position.y == leftGlove.position.y) {
+                    
+                    yellowBall.run(sequenceRight)
+                }
+            }
+            
+            if(rightGlove.contains(touch.location(in: self))) {
+                
+                if(greenBall.position.x == rightGlove.position.x && greenBall.position.y == rightGlove.position.y) {
+                    
+                    greenBall.run(sequenceLeft)
+                }
+                    
+                else if(redBall.position.x == rightGlove.position.x && redBall.position.y == rightGlove.position.y) {
+                    
+                    redBall.run(sequenceLeft)
+                }
+                    
+                else if(yellowBall.position.x == rightGlove.position.x && yellowBall.position.y == rightGlove.position.y) {
+                    
+                    yellowBall.run(sequenceLeft)
+                }
+                
+            }
             
         }
         
-        redBall.run(sequenceRight)//red ball in left hand, throw right
-        //redBall.run(sequenceLeft)//red ball in right hand, throw left
-        yellowBall.run(sequenceLeft)//yellow ball in right hand, throw left
-        //yellowBall.run(sequenceRight)//yellow ball in left hand, throw right
-        //greenBall.run(sequenceLeft)//green ball in right hand, throw left
     }
 
     
