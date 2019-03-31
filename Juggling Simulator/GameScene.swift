@@ -114,13 +114,13 @@ class GameScene: SKScene {
         
     }
     
-    func startTimer(){
+    func startTimer() {
         
         timerCount = Timer.scheduledTimer(timeInterval: 1, target: self, selector: (#selector(GameScene.updateTime)), userInfo: nil, repeats: true)
         
     }
     
-    func updateTime(){
+    func updateTime() {
         
         currentTime += 1
         timer.text = "\(currentTime / 60) : \(currentTime % 60)"
@@ -152,94 +152,81 @@ class GameScene: SKScene {
         let group4 = SKAction.group([moveDownLeft,moveLefter])
         let sequenceLeft = SKAction.sequence([group3,group4])
         
+        greenBall.run(sequenceRight)
         
-        //redBall.run(sequenceRight)//red ball in left hand, throw right
+        //Make conditional block here
+        
+        if(true) {
+            
+            
+        }
+        
+        redBall.run(sequenceRight)//red ball in left hand, throw right
         //redBall.run(sequenceLeft)//red ball in right hand, throw left
-        //yellowBall.run(sequenceLeft)//yellow ball in right hand, throw left
+        yellowBall.run(sequenceLeft)//yellow ball in right hand, throw left
         //yellowBall.run(sequenceRight)//yellow ball in left hand, throw right
-        greenBall.run(sequenceRight)//green ball in left hand, throw right
         //greenBall.run(sequenceLeft)//green ball in right hand, throw left
     }
 
     
-    override func update(_ currentTime:TimeInterval){
+    override func update(_ currentTime:TimeInterval) {
         
         //Game is over, stop timer
-        if(gameOver){
+        if(gameOver) {
             
             timerCount.invalidate()
             
             timer.text = "Game Over!"
             
-            //TO-DO: Transition to end screen w/ score and high score
+            abort()
             
         }
         
-        let leftSize = leftGlove.size
-        let rightSize = leftGlove.size
-        
-        if(greenBall.position.x < leftGlove.position.x + leftSize.width && greenBall.position.x > leftGlove.position.x - leftSize.width) {
+        //Green and Red check
+        if(greenBall.position.x == redBall.position.x && greenBall.position.y == redBall.position.y) {
             
-            if(greenBall.position.y < leftGlove.position.y + leftSize.height && greenBall.position.y > leftGlove.position.y - leftSize.height) {
+            if(greenBall.position.x == leftGlove.position.x && greenBall.position.y == leftGlove.position.y) {
                 
-                //do catch
+                gameOver = true
             }
-        }
-        
-        else if(greenBall.position.x < rightGlove.position.x + rightSize.width && greenBall.position.x > rightGlove.position.x - rightSize.width) {
             
-            if(greenBall.position.y < rightGlove.position.y + rightSize.height && greenBall.position.y > rightGlove.position.y - rightSize.height) {
+            else if(greenBall.position.x == rightGlove.position.x && greenBall.position.y == rightGlove.position.y) {
                 
-                //do catch
+                gameOver = true
             }
-        }
-        
-        else {
-            
             
         }
         
-        if(yellowBall.position.x < leftGlove.position.x + leftSize.width && yellowBall.position.x > leftGlove.position.x - leftSize.width) {
+        //Green and Yellow check
+        if(greenBall.position.x == yellowBall.position.x && greenBall.position.y == yellowBall.position.y) {
             
-            if(yellowBall.position.y < leftGlove.position.y + leftSize.height && yellowBall.position.y > leftGlove.position.y - leftSize.height) {
+            if(greenBall.position.x == leftGlove.position.x && greenBall.position.y == leftGlove.position.y) {
                 
-                //do catch
+                gameOver = true
             }
-        }
-            
-        else if(yellowBall.position.x < rightGlove.position.x + rightSize.width && yellowBall.position.x > rightGlove.position.x - rightSize.width) {
-            
-            if(yellowBall.position.y < rightGlove.position.y + rightSize.height && yellowBall.position.y > rightGlove.position.y - rightSize.height) {
                 
-                //do catch
+            else if(greenBall.position.x == rightGlove.position.x && greenBall.position.y == rightGlove.position.y) {
+                
+                gameOver = true
             }
-        }
-            
-        else {
-            
             
         }
         
-        if(redBall.position.x < leftGlove.position.x + leftSize.width && redBall.position.x > leftGlove.position.x - leftSize.width) {
+        //Yellow and Red check
+        if(yellowBall.position.x == redBall.position.x && yellowBall.position.y == redBall.position.y) {
             
-            if(redBall.position.y < leftGlove.position.y + leftSize.height && redBall.position.y > leftGlove.position.y - leftSize.height) {
+            if(yellowBall.position.x == leftGlove.position.x && yellowBall.position.y == leftGlove.position.y) {
                 
-                //do catch
+                gameOver = true
             }
-        }
-            
-        else if(redBall.position.x < rightGlove.position.x + rightSize.width && redBall.position.x > rightGlove.position.x - rightSize.width) {
-            
-            if(redBall.position.y < rightGlove.position.y + rightSize.height && redBall.position.y > rightGlove.position.y - rightSize.height) {
                 
-                //do catch
+            else if(yellowBall.position.x == rightGlove.position.x && yellowBall.position.y == rightGlove.position.y) {
+                
+                gameOver = true
             }
-        }
-            
-        else {
-            
             
         }
+        
     }
     
 }//ends program
