@@ -133,8 +133,17 @@ class GameScene: SKScene {
         //Begin timer
         startTimer()
         
-        var redMoved = false
-        var yellowMoved = false
+        let moveLeftHandX = SKAction.moveTo(x: self.size.width * 0.30, duration: 0.5)
+        let moveLeftHandY = SKAction.moveTo(y: self.size.height * 0.25, duration: 0.5)
+        
+        let moveLeftHandBackX = SKAction.moveTo(x: self.size.width * 0.25, duration: 0.5)
+        let moveLeftHandBackY = SKAction.moveTo(y: self.size.height * 0.2, duration: 0.5)
+        
+        let moveRightHandX = SKAction.moveTo(x: self.size.width * 0.70, duration: 0.5)
+        let moveRightHandY = SKAction.moveTo(y: self.size.height * 0.25, duration: 0.5)
+        
+        let moveRightHandBackX = SKAction.moveTo(x: self.size.width * 0.75, duration: 0.5)
+        let moveRightHandBackY = SKAction.moveTo(y: self.size.height * 0.2, duration: 0.5)
         
         //right seqence moves the ball from the left hand to the right hand
         let moveRight = SKAction.moveTo(x: self.frame.size.width * 0.6, duration: 1.5)
@@ -155,27 +164,38 @@ class GameScene: SKScene {
         let group4 = SKAction.group([moveDownLeft,moveLefter])
         let sequenceLeft = SKAction.sequence([group3,group4])
         
+        let throwBall = SKAction.group([moveLeftHandX, moveLeftHandY])
+        let returnHand = SKAction.group([moveLeftHandBackX, moveLeftHandBackY])
+        
+        let handSequence = SKAction.sequence([throwBall, returnHand])
+        
+        let throwBallRight = SKAction.group([moveRightHandX, moveRightHandY])
+        let returnHandRight = SKAction.group([moveRightHandBackX, moveRightHandBackY])
+        
+        let handSequenceRight = SKAction.sequence([throwBallRight, returnHandRight])
+        
         for touch in touches {
-            
-            //TO-DO get green to go have the others wait while green moves and then have red and yellow go with there being somewhat of a delay between them as well
-            
             
             if(leftGlove.contains(touch.location(in: self))) {
                 
                 if(greenBall.contains(touch.location(in: self))) {
                     
                     greenBall.run(sequenceRight)
+                    leftGlove.run(handSequence)
                 }
                 
                 else if(redBall.contains(touch.location(in: self))) {
                     
                     redBall.run(sequenceRight)
+                    leftGlove.run(handSequence)
                 }
                 
                 else if(yellowBall.contains(touch.location(in: self))) {
                     
                     yellowBall.run(sequenceRight)
+                    leftGlove.run(handSequence)
                 }
+                
             }
             
             if(rightGlove.contains(touch.location(in: self))) {
@@ -183,16 +203,19 @@ class GameScene: SKScene {
                 if(greenBall.contains(touch.location(in: self))) {
                     
                     greenBall.run(sequenceLeft)
+                    rightGlove.run(handSequenceRight)
                 }
                     
                 else if(redBall.contains(touch.location(in: self))) {
                     
                     redBall.run(sequenceLeft)
+                    rightGlove.run(handSequenceRight)
                 }
                     
                 else if(yellowBall.contains(touch.location(in: self))) {
                     
                     yellowBall.run(sequenceLeft)
+                    rightGlove.run(handSequenceRight)
                 }
                 
             }
