@@ -155,37 +155,24 @@ class GameScene: SKScene {
         let group4 = SKAction.group([moveDownLeft,moveLefter])
         let sequenceLeft = SKAction.sequence([group3,group4])
         
-        greenBall.run(sequenceRight)
-        
         for touch in touches {
             
             //TO-DO get green to go have the others wait while green moves and then have red and yellow go with there being somewhat of a delay between them as well
             
-            if(redMoved == false) {
-                
-                redBall.run(sequenceRight)
-                redMoved = true
-            }
-            
-            if(yellowMoved == false) {
-                
-                yellowBall.run(sequenceLeft)
-                yellowMoved = true
-            }
             
             if(leftGlove.contains(touch.location(in: self))) {
                 
-                if(greenBall.position.x == leftGlove.position.x && greenBall.position.y == leftGlove.position.y) {
+                if(greenBall.contains(touch.location(in: self))) {
                     
                     greenBall.run(sequenceRight)
                 }
                 
-                else if(redBall.position.x == leftGlove.position.x && redBall.position.y == leftGlove.position.y) {
+                else if(redBall.contains(touch.location(in: self))) {
                     
                     redBall.run(sequenceRight)
                 }
                 
-                else if(yellowBall.position.x == leftGlove.position.x && yellowBall.position.y == leftGlove.position.y) {
+                else if(yellowBall.contains(touch.location(in: self))) {
                     
                     yellowBall.run(sequenceRight)
                 }
@@ -193,17 +180,17 @@ class GameScene: SKScene {
             
             if(rightGlove.contains(touch.location(in: self))) {
                 
-                if(greenBall.position.x == rightGlove.position.x && greenBall.position.y == rightGlove.position.y) {
+                if(greenBall.contains(touch.location(in: self))) {
                     
                     greenBall.run(sequenceLeft)
                 }
                     
-                else if(redBall.position.x == rightGlove.position.x && redBall.position.y == rightGlove.position.y) {
+                else if(redBall.contains(touch.location(in: self))) {
                     
                     redBall.run(sequenceLeft)
                 }
                     
-                else if(yellowBall.position.x == rightGlove.position.x && yellowBall.position.y == rightGlove.position.y) {
+                else if(yellowBall.contains(touch.location(in: self))) {
                     
                     yellowBall.run(sequenceLeft)
                 }
