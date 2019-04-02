@@ -148,8 +148,8 @@ class GameScene: SKScene {
         //right seqence moves the ball from the left hand to the right hand
         let moveRight = SKAction.moveTo(x: self.frame.size.width * 0.6, duration: 1.5)
         let moveUp = SKAction.moveTo(y: self.frame.size.height * 0.75, duration: 1.5)
-        let moveDown = SKAction.moveTo(y: rightGlove.position.y, duration: 1.5)
-        let moveRighter = SKAction.moveTo(x: rightGlove.position.x, duration: 1.5)
+        let moveDown = SKAction.moveTo(y: self.size.height * 0.2, duration: 1.5)
+        let moveRighter = SKAction.moveTo(x: self.size.width * 0.75, duration: 1.5)
         let group1 = SKAction.group([moveRight,moveUp])
         let group2 = SKAction.group([moveDown,moveRighter])
         let sequenceRight = SKAction.sequence([group1,group2])
@@ -157,8 +157,8 @@ class GameScene: SKScene {
         
         //left sequence moves the ball from the right hand to the left hand
         let moveLeft = SKAction.moveTo(x: self.frame.size.width/2, duration: 1.5)
-        let moveDownLeft = SKAction.moveTo(y: leftGlove.position.y, duration: 1.5)
-        let moveLefter = SKAction.moveTo(x: leftGlove.position.x, duration: 1.5)
+        let moveDownLeft = SKAction.moveTo(y: self.size.height * 0.2, duration: 1.5)
+        let moveLefter = SKAction.moveTo(x: self.size.width * 0.25, duration: 1.5)
 
         let group3 = SKAction.group([moveLeft,moveUp])
         let group4 = SKAction.group([moveDownLeft,moveLefter])
