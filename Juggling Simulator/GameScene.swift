@@ -231,10 +231,12 @@ class GameScene: SKScene {
         if(gameOver) {
             
             timerCount.invalidate()
-            
             timer.text = "Game Over!"
-            
-            abort()
+            //sleep(2)
+            let startTemp:StartScene = StartScene(size: self.size)
+            startTemp.scaleMode = SKSceneScaleMode.aspectFill
+            self.scene?.view?.presentScene(startTemp,transition: SKTransition.doorsCloseHorizontal(withDuration:2.0))
+            //abort()
             
         }
         
