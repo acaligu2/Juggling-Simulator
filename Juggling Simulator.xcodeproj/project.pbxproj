@@ -18,8 +18,7 @@
 		AC40B3152249479B00E43B1D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC40B3132249479B00E43B1D /* LaunchScreen.storyboard */; };
 		AC40B3202249479B00E43B1D /* Juggling_SimulatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC40B31F2249479B00E43B1D /* Juggling_SimulatorTests.swift */; };
 		AC40B32B2249479B00E43B1D /* Juggling_SimulatorUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC40B32A2249479B00E43B1D /* Juggling_SimulatorUITests.swift */; };
-		E13786D22253D5F7007DF1B9 /* StartScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13786D12253D5F7007DF1B9 /* StartScene.swift */; };
-		E13786D42253D5FC007DF1B9 /* StartScene in Resources */ = {isa = PBXBuildFile; fileRef = E13786D32253D5FC007DF1B9 /* StartScene */; };
+		E138100A2254FA5D0046C7D1 /* StartScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13810092254FA5D0046C7D1 /* StartScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,8 +56,7 @@
 		AC40B3262249479B00E43B1D /* Juggling SimulatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Juggling SimulatorUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC40B32A2249479B00E43B1D /* Juggling_SimulatorUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Juggling_SimulatorUITests.swift; sourceTree = "<group>"; };
 		AC40B32C2249479B00E43B1D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E13786D12253D5F7007DF1B9 /* StartScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StartScene.swift; path = "../../../Juggling-Simulator/Juggling Simulator/StartScene.swift"; sourceTree = "<group>"; };
-		E13786D32253D5FC007DF1B9 /* StartScene */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = StartScene; path = "../../../Juggling-Simulator/Juggling Simulator/StartScene"; sourceTree = "<group>"; };
+		E13810092254FA5D0046C7D1 /* StartScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StartScene.swift; path = ../StartScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,8 +109,7 @@
 			children = (
 				AC40B3042249479B00E43B1D /* AppDelegate.swift */,
 				AC40B3062249479B00E43B1D /* GameScene.sks */,
-				E13786D12253D5F7007DF1B9 /* StartScene.swift */,
-				E13786D32253D5FC007DF1B9 /* StartScene */,
+				E13810092254FA5D0046C7D1 /* StartScene.swift */,
 				AC40B3082249479B00E43B1D /* Actions.sks */,
 				AC40B30A2249479B00E43B1D /* GameScene.swift */,
 				AC40B30C2249479B00E43B1D /* GameViewController.swift */,
@@ -253,7 +250,6 @@
 				AC31104C224A7EBD000CA6D8 /* Pentagon.ttf in Resources */,
 				AC40B3102249479B00E43B1D /* Main.storyboard in Resources */,
 				AC40B3072249479B00E43B1D /* GameScene.sks in Resources */,
-				E13786D42253D5FC007DF1B9 /* StartScene in Resources */,
 				AC40B3122249479B00E43B1D /* Assets.xcassets in Resources */,
 				AC40B3152249479B00E43B1D /* LaunchScreen.storyboard in Resources */,
 				AC40B3092249479B00E43B1D /* Actions.sks in Resources */,
@@ -284,7 +280,7 @@
 				AC40B30B2249479B00E43B1D /* GameScene.swift in Sources */,
 				AC40B30D2249479B00E43B1D /* GameViewController.swift in Sources */,
 				AC40B3052249479B00E43B1D /* AppDelegate.swift in Sources */,
-				E13786D22253D5F7007DF1B9 /* StartScene.swift in Sources */,
+				E138100A2254FA5D0046C7D1 /* StartScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
