@@ -18,9 +18,9 @@ class StartScene:SKScene{
         start.zPosition = 1
         
         
-        let myLabel = SKLabelNode(fontNamed:"Chalkduster")
-        myLabel.text = "click to enter"
-        myLabel.fontSize = 65
+        let myLabel = SKLabelNode(fontNamed:"Pentagon")
+        myLabel.text = "Tap to begin"
+        myLabel.fontSize = 150
         myLabel.position = CGPoint(x:self.frame.midX,y:self.frame.midY)
         myLabel.zPosition = 2
         self.addChild(myLabel)
@@ -30,7 +30,7 @@ class StartScene:SKScene{
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         let startTemp:GameScene = GameScene(size: self.size)
         startTemp.scaleMode = SKSceneScaleMode.aspectFill
-        self.scene?.view?.presentScene(startTemp,transition: SKTransition.doorsCloseHorizontal(withDuration:2.0))
+        self.scene?.view?.presentScene(startTemp,transition: SKTransition.doorsOpenHorizontal(withDuration:2.0))
     }
     
 }
