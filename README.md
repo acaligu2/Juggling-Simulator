@@ -1,4 +1,5 @@
-#Juggling-Simulator
+# Juggling Simulator
+
 Developed in Xcode using Swift
 
 Are you tired of failing to juggle in real life?
